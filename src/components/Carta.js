@@ -11,17 +11,13 @@ class Carta extends React.Component {
 
     render() {
         return (
-            <div className={'carta' + (this.state.virada ? ' virada' : '')}>
+            <div className={'carta' + (this.state.virada ? ' virada' : '')} onClick={() => this.props.funcaoVirar()}>
                 <p>{this.props.imagem}</p>                
             </div>
         )
     }
 
-    virar() {
-      this.setState(state => ({
-        virada: true
-      }));
-    }
+    
 }
 
 export default Carta;

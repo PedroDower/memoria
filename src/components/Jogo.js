@@ -24,7 +24,7 @@ class Jogo extends React.Component {
 
         let listaCartas = cartas.map((carta) =>
             <div className="col-4 col-md-3 col-lg-2" onClick={this.escolher}>
-                <Carta imagem={carta}></Carta>
+                <Carta imagem={carta} funcaoVirar={this.virar}></Carta>
             </div>
         );
 
@@ -37,6 +37,12 @@ class Jogo extends React.Component {
 
     escolher() {
         console.log('escolhido');
+    }
+
+    virar = () => {
+        this.setState(state => ({
+            virada: true
+        }));
     }
 }
 
