@@ -1,6 +1,8 @@
 import React from 'react';
 import './carta.css';
 
+import Jogo from './Jogo.js';
+
 class Carta extends React.Component {
     constructor(props) {
         super(props);
@@ -11,13 +13,19 @@ class Carta extends React.Component {
 
     render() {
         return (
-            <div className={'carta' + (this.state.virada ? ' virada' : '')} onClick={() => this.props.funcaoVirar()}>
+            <div className={'carta' + (this.state.virada ? ' virada' : '')} onClick={this.virar}>
                 <p>{this.props.imagem}</p>                
             </div>
         )
     }
 
-    
+    virar = () => {
+        this.setState(state => ({
+            virada: true
+        }));
+
+        this.props.escolher();
+    }
 }
 
 export default Carta;

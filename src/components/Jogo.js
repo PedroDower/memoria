@@ -12,7 +12,7 @@ class Jogo extends React.Component {
             carta2: null,
         }
 
-        this.escolher = this.escolher.bind(this);
+        //this.escolher = this.escolher.bind(this);
     }
 
     render() {
@@ -24,7 +24,7 @@ class Jogo extends React.Component {
 
         let listaCartas = cartas.map((carta) =>
             <div className="col-4 col-md-3 col-lg-2" onClick={this.escolher}>
-                <Carta imagem={carta} funcaoVirar={this.virar}></Carta>
+                <Carta imagem={carta} metEscolhes={this.escolher}></Carta>
             </div>
         );
 
@@ -39,17 +39,13 @@ class Jogo extends React.Component {
         console.log('escolhido');
     }
 
-    virar = () => {
-        this.setState(state => ({
-            virada: true
-        }));
-    }
+    
 }
 
 
 
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
     
     while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
