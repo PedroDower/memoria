@@ -6,13 +6,11 @@ import Carta from './Carta.js';
 class Jogo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            estado: 'iniciando',
-            carta1: null,
-            carta2: null,
+        this.state = {            
+            imagemEscolhida: null,            
         }
 
-        //this.escolher = this.escolher.bind(this);
+        this.escolher = this.escolher.bind(this);
     }
 
     render() {
@@ -21,10 +19,10 @@ class Jogo extends React.Component {
         cartas = cartas.concat(cartas);
         // embaralha
         cartas = shuffle(cartas);
-
+        
         let listaCartas = cartas.map((carta) =>
-            <div className="col-4 col-md-3 col-lg-2" onClick={this.escolher}>
-                <Carta imagem={carta} metEscolhes={this.escolher}></Carta>
+            <div className="col-4 col-md-3 col-lg-2">
+                <Carta imagem={carta} opEscolher={this.escolher} ctxJogo={this}></Carta>
             </div>
         );
 
@@ -35,11 +33,23 @@ class Jogo extends React.Component {
         )
     }
 
-    escolher() {
-        console.log('escolhido');
-    }
+    // metodo chamado quando uma carta eh clicada
+    escolher(carta) {                                
+        if(this.state.imagemEscolhida == null) {                      
+            console.log(carta.props.imagem)
+            this.setState({
+                imagemEscolhida: carta.props.imagem
+            })
+            carta.virar();
+
+            console.log(this.state.imagemEscolhida);
+        }
+        else {
+
+        }
 
     
+    }
 }
 
 
