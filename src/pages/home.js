@@ -1,8 +1,6 @@
 import React from 'react';
 import './home.css';
 import { Link } from 'react-router-dom'
-//import api from '../services/api';
-//import io from 'socket.io-client';
 
 function Home() {
   return (

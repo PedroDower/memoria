@@ -11,6 +11,7 @@
 .carta p {
     margin-bottom: 0px;
     display: none;
+    font-size: 24px;
 }
 
 .carta.virada p {

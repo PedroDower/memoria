@@ -6,8 +6,11 @@ class Carta extends React.Component {
         super(props);
         this.state = {virada: false};
 
-        this.virar = this.virar.bind(this);        
+        this.virar = this.virar.bind(this);   
+        this.clicar = this.clicar.bind(this);
+        this.contextoCarta =  React.createContext(this);     
     }
+    static contextoCarta;
 
     render() {
         return (
@@ -17,15 +20,15 @@ class Carta extends React.Component {
         )
     }
 
-    virar() {
+    virar() {        
         this.setState(state => ({
             virada: !this.state.virada
         }));
     }
 
     // Chama o metodo escolher do jogo, ele decide se a carta sera virada ou nao
-    clicar = () => {        
-        this.props.opEscolher(this, this.props.ctxJogo);
+    clicar = () => {                
+        this.props.opEscolher(this.contextoCarta._currentValue);
     }
 }
 
